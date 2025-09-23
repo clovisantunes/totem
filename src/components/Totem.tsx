@@ -3,7 +3,7 @@ import CpfScreen from './screens/CpfScreen.tsx';
 import HasAppointmentScreen from './screens/HasAppointmentScreen.tsx';
 import NoAppointmentScreen from './screens/NoAppointmentScreen.tsx';
 import TicketScreen from './screens/TicketScreen.tsx';
-import type { TotemState, ScreenType, TicketInfo } from '../types/index.ts';
+import type { TotemState,  TicketInfo } from '../types/index.ts';
 import './styles/Totem.css';
 
 const Totem: React.FC = () => {
@@ -63,7 +63,6 @@ const Totem: React.FC = () => {
     setState(prev => ({ ...prev, loading: true, error: '' }));
     
     setTimeout(() => {
-      const lastDigit = parseInt(cpf.replace(/\D/g, '').slice(-1));
       
     const cpfLimpo = cpf.replace(/\D/g, '');
     const hasAppointment = cpfLimpo === '04364979058';
@@ -77,7 +76,7 @@ const Totem: React.FC = () => {
     }, 1500);
   };
 
-  const generateTicket = (type: 'confirmation' | 'assistance') => {
+  const generateTicket = () => {
     setState(prev => ({ ...prev, loading: true }));
     
     setTimeout(() => {

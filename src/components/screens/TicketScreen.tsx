@@ -14,12 +14,10 @@ const TicketScreen: React.FC<TicketScreenProps> = ({
   onRestart
 }) => {
   useEffect(() => {
-    // Configurar o timer para voltar à tela inicial após 5 segundos
     const timer = setTimeout(() => {
       onRestart();
     }, 5000);
 
-    // Limpar o timer se o componente for desmontado
     return () => clearTimeout(timer);
   }, [onRestart]);
 

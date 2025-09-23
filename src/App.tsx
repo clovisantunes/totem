@@ -1,4 +1,3 @@
-import React from 'react';
 import Totem from './components/Totem';
 import './App.css';
 
