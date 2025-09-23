@@ -76,7 +76,7 @@ const Totem: React.FC = () => {
     }, 1500);
   };
 
-  const generateTicket = () => {
+  const generateTicket = (_type: 'confirmation' | 'assistance') => {
     setState(prev => ({ ...prev, loading: true }));
     
     setTimeout(() => {
