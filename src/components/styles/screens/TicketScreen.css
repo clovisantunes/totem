@@ -1,0 +1,76 @@
+.ticket-screen {
+  gap: 20px;
+}
+
+.ticket {
+  background-color: #f8f9fa;
+  border: 2px dashed #2a5298;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  max-width: 400px;
+  width: 100%;
+}
+
+.ticket h3 {
+  color: #2a5298;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.ticket-info {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.ticket-info p {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.ticket-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #28a745;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.instructions {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 10px;
+  text-align: left;
+  max-width: 400px;
+}
+
+.instructions p {
+  margin-bottom: 5px;
+  color: #856404;
+}
+
+.instructions strong {
+  color: #856404;
+}
+
+.countdown {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+}
+
+.countdown p {
+  color: #6c757d;
+  font-size: 16px;
+  margin: 0;
+}
+
+.countdown-number {
+  font-weight: bold;
+  color: #2a5298;
+  font-size: 18px;
+}
