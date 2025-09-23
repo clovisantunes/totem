@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import CpfScreen from './screens/CpfScreen.tsx';
-import HasAppointmentScreen from './screens/HasAppointmentScreen.tsx';
-import NoAppointmentScreen from './screens/NoAppointmentScreen.tsx';
+import HasAppointmentScreen from './screens/HasAppointmentScreen';
+import NoAppointmentScreen from './screens/NoAppointmentScreen';
 import TicketScreen from './screens/TicketScreen.tsx';
-import type { TotemState,  TicketInfo } from '../types/index.ts';
+import type { TotemState,  TicketInfo } from '../types/index';
 import './styles/Totem.css';
 
 const Totem: React.FC = () => {
