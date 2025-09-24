@@ -21,7 +21,6 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
     const cleanCpf = cpf.replace(/\D/g, '');
     if (cleanCpf.length < 11) {
       const newCpf = cleanCpf + number;
-      // Formata o CPF automaticamente
       const formattedCpf = formatCPF(newCpf);
       onCpfChange(formattedCpf);
     }
@@ -61,7 +60,6 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
   return (
     <div className="screen cpf-screen">
       <div className="cpf-container">
-        {/* Área do CPF (70% esquerda) */}
         <div className="cpf-display-area">
           <h2>Digite seu CPF</h2>
           <p>Use o teclado ao lado para digitar seu CPF</p>

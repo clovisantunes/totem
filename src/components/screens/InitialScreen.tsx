@@ -10,10 +10,7 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
   return (
     <div className="screen initial-screen">
       <div className="initial-container">
-        <div className="initial-header">
-          <h1>Bem-vindo à Clínica Médica</h1>
-          <p>Selecione o tipo de atendimento desejado</p>
-        </div>
+    
         
         <div className="service-selection">
           <button 

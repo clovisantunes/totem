@@ -7,47 +7,57 @@
   align-items: center;
   justify-content: center;
   background: #ffffff;
+  overflow: auto; /* Permite scroll se necessário */
 }
 
 .initial-container {
   width: 100%;
   max-width: 1200px;
-  padding: 40px;
+  padding: 2vh 2vw; /* Usar unidades relativas */
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: center;
 }
 
 .initial-header {
-  margin-bottom: 60px;
+  margin-bottom: 4vh;
+  padding: 0 2vw;
 }
 
 .initial-header h1 {
   color: #2d3748;
-  font-size: 42px;
-  margin-bottom: 15px;
+  font-size: clamp(2rem, 4vw, 3rem); /* Tamanho responsivo */
+  margin-bottom: 1vh;
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .initial-header p {
   color: #718096;
-  font-size: 20px;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.4;
 }
 
 .service-selection {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 50px;
+  gap: 3vw;
+  margin-bottom: 4vh;
+  padding: 0 1vw;
 }
 
 .service-card {
   background: #ffffff;
   border: 3px solid #e2e8f0;
   border-radius: 20px;
-  padding: 40px 30px;
+  padding: 3vh 2vw;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  height: 400px;
+  min-height: 50vh;
+  max-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,7 +65,7 @@
 
 .service-card:hover:not(:disabled) {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border-color: #25d366;
 }
 
@@ -73,45 +83,48 @@
 }
 
 .service-icon {
-  font-size: 60px;
-  margin-bottom: 20px;
+    font-size: 36px;
+    margin-bottom: 1vh;
 }
 
 .service-card h3 {
   color: #2d3748;
-  font-size: 28px;
-  margin-bottom: 15px;
+  font-size: 24px;
+  margin-bottom: 2vh;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .service-card p {
   color: #718096;
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  margin-bottom: 2vh;
   line-height: 1.4;
 }
 
 .service-card ul {
   text-align: left;
-  margin: 20px 0;
-  padding: 0 20px;
+  margin: 2vh 0;
+  padding: 0 1vw;
 }
 
 .service-card li {
   color: #4a5568;
-  font-size: 16px;
-  margin: 8px 0;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  margin: 0.5vh 0;
   list-style: none;
+  line-height: 1.4;
 }
 
 .service-action {
   margin-top: auto;
+  padding-top: 2vh;
 }
 
 .action-text {
   color: #25d366;
   font-weight: 600;
-  font-size: 18px;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   transition: all 0.3s ease;
 }
 
@@ -121,7 +134,7 @@
 
 .initial-instructions {
   background: #f7fafc;
-  padding: 25px;
+  padding: 2vh 2vw;
   border-radius: 12px;
   border-left: 4px solid #25d366;
   max-width: 800px;
@@ -130,8 +143,9 @@
 
 .initial-instructions p {
   color: #4a5568;
-  margin: 5px 0;
-  font-size: 16px;
+  margin: 0.5vh 0;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  line-height: 1.4;
 }
 
 .initial-instructions strong {
@@ -152,32 +166,119 @@
   to { transform: rotate(360deg); }
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
+/* Breakpoints mais específicos */
+@media (max-width: 1024px) {
   .service-selection {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 2vw;
   }
   
   .service-card {
+    padding: 2.5vh 1.5vw;
+    min-height: 45vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .initial-container {
+    padding: 1vh 3vw;
+  }
+  
+  .service-selection {
+    grid-template-columns: 1fr;
+    gap: 2vh;
+    margin-bottom: 3vh;
+  }
+  
+  .service-card {
+    min-height: auto;
+    max-height: none;
     height: auto;
-    min-height: 350px;
-    padding: 30px 20px;
+    padding: 3vh 4vw;
+  }
+  
+  .initial-header {
+    margin-bottom: 3vh;
   }
   
   .initial-header h1 {
-    font-size: 32px;
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
   }
   
-  .initial-header p {
-    font-size: 18px;
+  .service-icon {
+       font-size: 36px;
+    margin-bottom: 1vh;
   }
   
   .service-card h3 {
     font-size: 24px;
   }
+}
+
+@media (max-width: 480px) {
+  .initial-container {
+    padding: 1vh 4vw;
+  }
+  
+  .service-card {
+    padding: 2.5vh 5vw;
+  }
+  
+  .service-card ul {
+    padding: 0 3vw;
+  }
+  
+  .initial-instructions {
+    padding: 1.5vh 3vw;
+  }
+}
+
+/* Para telas muito grandes */
+@media (min-width: 1600px) {
+  .initial-container {
+    max-width: 1400px;
+  }
+  
+  .service-card {
+    max-height: 50vh;
+  }
+}
+
+/* Ajuste para altura mínima */
+@media (max-height: 700px) {
+  .initial-container {
+    justify-content: flex-start;
+    padding-top: 5vh;
+  }
+  
+  .service-card {
+    min-height: 40vh;
+  }
+}
+
+/* Garantir que não fique muito comprimido */
+@media (max-height: 600px) and (max-width: 768px) {
+  .service-selection {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card {
+    min-height: 35vh;
+    padding: 2vh 3vw;
+  }
   
   .service-icon {
-    font-size: 50px;
+    font-size: 36px;
+    margin-bottom: 1vh;
+  }
+  
+ 
+  
+  .service-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1vh;
+  }
+  
+  .service-card li {
+    font-size: 0.8rem;
   }
 }
