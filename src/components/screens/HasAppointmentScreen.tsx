@@ -9,21 +9,51 @@ interface HasAppointmentScreenProps {
   serviceType?: 'assistencial' | 'trabalho';
 }
 
+interface ConsultaInfo {
+  nome: string;
+  tipo: string;
+  medico: string;
+  especialidade: string;
+  data: string;
+  horario: string;
+  sala: string;
+}
+
 const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
   cpf,
   loading,
   onConfirm,
   onAssistance
 }) => {
-  // Detalhes da consulta para o CPF específico
-  const consultaInfo = {
-    nome: 'Clovis Antunes',
+  const consultasPorCPF: Record<string, ConsultaInfo> = {
+    '04364979058': {
+      nome: 'Clovis Antunes',
+      tipo: 'Consulta de Retorno',
+      medico: 'Dr. Carlos Silva',
+      especialidade: 'Cardiologia',
+      data: '25/01/2024',
+      horario: '14:30',
+      sala: 'Sala 205'
+    },
+    '89790014015': {
+      nome: 'Dimitrio Martins de Andrade',
+      tipo: 'Consulta Clinica',
+      medico: 'Dra. Gabriel Porto',
+      especialidade: 'Clínica Geral',
+      data: '25/01/2024',
+      horario: '15:45',
+      sala: 'Sala 108'
+    }
+  };
+
+  const consultaInfo = consultasPorCPF[cpf.replace(/\D/g, '')] || {
+    nome: 'Paciente',
     tipo: 'Consulta Médica',
-    medico: 'Dr. Carlos Silva',
-    especialidade: 'Cardiologia',
-    data: '25/01/2024',
-    horario: '14:30',
-    sala: 'Sala 205'
+    medico: 'Médico',
+    especialidade: 'Especialidade',
+    data: 'Data',
+    horario: 'Horário',
+    sala: 'Sala'
   };
 
   return (
