@@ -10,7 +10,7 @@ interface HasAppointmentScreenProps {
 }
 
 interface ConsultaInfo {
-  nome: string;
+ nome: string;
   tipo: string;
   medico: string;
   especialidade: string;

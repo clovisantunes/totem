@@ -67,7 +67,7 @@ const Totem: React.FC = () => {
     
     setTimeout(() => {
       const cpfLimpo = cpf.replace(/\D/g, '');
-      const hasAppointment = cpfLimpo === '04364979058';
+      const hasAppointment = ['04364979058', '89790014015'].includes(cpfLimpo);
 
       setState(prev => ({
         ...prev,
