@@ -1,68 +1,47 @@
-* {
+.totem-container {
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-.totem-container {
-  width: 100%;
-  max-width: 800px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
   overflow: hidden;
 }
 
 .totem-header {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
-  padding: 20px;
+  background: #ffffff;
+  padding: 25px;
   text-align: center;
+  color: #2d3748;
+  border-bottom: 3px solid #25d366; /* Verde médico como acento */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .totem-header h1 {
-  font-size: 28px;
-  margin-bottom: 5px;
+  margin: 0;
+  font-size: 42px;
+  font-weight: 600;
+  color: #25d366; /* Verde médico */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .totem-header p {
-  font-size: 16px;
-  opacity: 0.9;
+  margin: 10px 0 0 0;
+  font-size: 18px;
+  color: #4a5568; /* Cinza médio */
+  font-weight: 400;
 }
 
 .totem-content {
-  padding: 30px;
-  min-height: 400px;
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.screen {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 600px) {
-  .totem-content {
-    padding: 20px;
-  }
+  justify-content: center;
+  padding: 30px;
+  margin: 0;
+  overflow: hidden;
+  min-height: 0;
+  background: #f7fafc;
 }
