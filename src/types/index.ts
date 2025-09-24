@@ -6,7 +6,7 @@ export interface TotemState {
   loading: boolean;
   error: string;
   serviceType?: 'assistencial' | 'trabalho';
-  ticketType?: 'confirmation' | 'assistance'; // Adicione esta linha
+  ticketType?: 'confirmation' | 'assistance'; 
 }
 
 export interface TicketInfo {

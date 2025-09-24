@@ -19,7 +19,6 @@ const Totem: React.FC = () => {
     ticketType: undefined
   });
 
-  // Função de validação de CPF
   const validateCPF = (cpf: string): boolean => {
     cpf = cpf.replace(/\D/g, '');
     
@@ -49,7 +48,6 @@ const Totem: React.FC = () => {
     return true;
   };
 
-  // Função de formatação de CPF
   const formatCPF = (value: string): string => {
     const numbers = value.replace(/\D/g, '');
     
@@ -64,7 +62,6 @@ const Totem: React.FC = () => {
     }
   };
 
-  // Função para verificar agendamento
   const checkAppointment = (cpf: string) => {
     setState(prev => ({ ...prev, loading: true, error: '' }));
     
@@ -81,7 +78,6 @@ const Totem: React.FC = () => {
     }, 1500);
   };
 
-  // Função para gerar ticket (corrigida)
   const generateTicket = (type: 'confirmation' | 'assistance', serviceType?: 'assistencial' | 'trabalho') => {
     setState(prev => ({ ...prev, loading: true }));
     

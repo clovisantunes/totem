@@ -166,7 +166,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Breakpoints mais específicos */
 @media (max-width: 1024px) {
   .service-selection {
     gap: 2vw;
@@ -232,7 +231,6 @@
   }
 }
 
-/* Para telas muito grandes */
 @media (min-width: 1600px) {
   .initial-container {
     max-width: 1400px;
@@ -243,7 +241,6 @@
   }
 }
 
-/* Ajuste para altura mínima */
 @media (max-height: 700px) {
   .initial-container {
     justify-content: flex-start;
@@ -255,7 +252,6 @@
   }
 }
 
-/* Garantir que não fique muito comprimido */
 @media (max-height: 600px) and (max-width: 768px) {
   .service-selection {
     grid-template-columns: 1fr;

@@ -16,7 +16,7 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
   error,
   onCpfChange,
   onCpfSubmit,
-  onBack // ✅ Agora está sendo recebida
+  onBack 
 }) => {
   const handleNumberClick = (number: string) => {
     const cleanCpf = cpf.replace(/\D/g, '');
@@ -61,7 +61,6 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
   return (
     <div className="screen cpf-screen">
       <div className="cpf-container">
-        {/* ✅ BOTÃO DE VOLTAR ADICIONADO AQUI */}
         <button className="back-button" onClick={onBack}>
           ← Voltar para Seleção
         </button>
@@ -95,7 +94,6 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
           </div>
         </div>
 
-        {/* Teclado numérico (30% direita) */}
         <div className="numeric-keyboard">
           <div className="keyboard-grid">
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('1')}>1</button>

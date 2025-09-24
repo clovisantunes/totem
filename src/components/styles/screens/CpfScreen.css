@@ -8,7 +8,7 @@
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  position: relative; /* Para posicionar o botão de voltar */
+  position: relative; 
 }
 
 .cpf-container {
@@ -19,7 +19,6 @@
   padding: 0;
 }
 
-/* Botão de voltar */
 .back-button {
   position: absolute;
   top: 20px;
@@ -43,7 +42,6 @@
   transform: translateX(-3px);
 }
 
-/* Área do CPF (70% esquerda) */
 .cpf-display-area {
   width: 70%;
   height: 100%;
@@ -126,7 +124,6 @@
   line-height: 1.4;
 }
 
-/* Teclado numérico (30% direita) */
 .numeric-keyboard {
   width: 30%;
   height: 100%;
@@ -259,7 +256,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .cpf-container {
     flex-direction: column;
