@@ -6,6 +6,7 @@ interface NoAppointmentScreenProps {
   loading: boolean;
   onAssistance: () => void;
   onRestart: () => void;
+  serviceType?: 'assistencial' | 'trabalho';
 }
 
 const NoAppointmentScreen: React.FC<NoAppointmentScreenProps> = ({

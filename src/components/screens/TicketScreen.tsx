@@ -6,6 +6,7 @@ interface TicketScreenProps {
   ticketInfo: TicketInfo;
   hasAppointment: boolean;
   onRestart: () => void;
+  serviceType?: 'assistencial' | 'trabalho';
 }
 
 const TicketScreen: React.FC<TicketScreenProps> = ({

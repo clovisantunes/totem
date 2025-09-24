@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
-import CpfScreen from './screens/CpfScreen.tsx';
+import InitialScreen from './screens/InitialScreen';
+import CpfScreen from './screens/CpfScreen';
 import HasAppointmentScreen from './screens/HasAppointmentScreen';
 import NoAppointmentScreen from './screens/NoAppointmentScreen';
-import TicketScreen from './screens/TicketScreen.tsx';
-import type { TotemState,  TicketInfo } from '../types/index';
+import TicketScreen from './screens/TicketScreen';
+import type { TotemState, TicketInfo } from '../types/index';
 import './styles/Totem.css';
 
 const Totem: React.FC = () => {
   const [state, setState] = useState<TotemState>({
-    currentScreen: 'cpf',
+    currentScreen: 'initial',
     cpf: '',
     hasAppointment: false,
     ticketNumber: null,
     loading: false,
-    error: ''
+    error: '',
+    serviceType: undefined,
+    ticketType: undefined
   });
 
+  // Função de validação de CPF
   const validateCPF = (cpf: string): boolean => {
     cpf = cpf.replace(/\D/g, '');
     
@@ -45,6 +49,7 @@ const Totem: React.FC = () => {
     return true;
   };
 
+  // Função de formatação de CPF
   const formatCPF = (value: string): string => {
     const numbers = value.replace(/\D/g, '');
     
@@ -59,13 +64,13 @@ const Totem: React.FC = () => {
     }
   };
 
+  // Função para verificar agendamento
   const checkAppointment = (cpf: string) => {
     setState(prev => ({ ...prev, loading: true, error: '' }));
     
     setTimeout(() => {
-      
-    const cpfLimpo = cpf.replace(/\D/g, '');
-    const hasAppointment = cpfLimpo === '04364979058';
+      const cpfLimpo = cpf.replace(/\D/g, '');
+      const hasAppointment = cpfLimpo === '04364979058';
 
       setState(prev => ({
         ...prev,
@@ -76,29 +81,51 @@ const Totem: React.FC = () => {
     }, 1500);
   };
 
-  const generateTicket = (_type: 'confirmation' | 'assistance') => {
+  // Função para gerar ticket (corrigida)
+  const generateTicket = (type: 'confirmation' | 'assistance', serviceType?: 'assistencial' | 'trabalho') => {
     setState(prev => ({ ...prev, loading: true }));
     
     setTimeout(() => {
       const newTicketNumber = Math.floor(1000 + Math.random() * 9000);
+      const ticketServiceType = serviceType || state.serviceType || 'assistencial';
       
       setState(prev => ({
         ...prev,
         loading: false,
         ticketNumber: newTicketNumber,
-        currentScreen: 'ticket'
+        ticketType: type,
+        currentScreen: 'ticket',
+        serviceType: ticketServiceType
       }));
+    }, 1000);
+  };
+
+  const handleServiceSelect = (serviceType: 'assistencial' | 'trabalho') => {
+    setState(prev => ({ ...prev, loading: true, serviceType }));
+    
+    setTimeout(() => {
+      if (serviceType === 'assistencial') {
+        setState(prev => ({
+          ...prev,
+          loading: false,
+          currentScreen: 'cpf'
+        }));
+      } else {
+        generateTicket('assistance', serviceType);
+      }
     }, 1000);
   };
 
   const restartProcess = () => {
     setState({
-      currentScreen: 'cpf',
+      currentScreen: 'initial',
       cpf: '',
       hasAppointment: false,
       ticketNumber: null,
       loading: false,
-      error: ''
+      error: '',
+      serviceType: undefined,
+      ticketType: undefined
     });
   };
 
@@ -115,7 +142,7 @@ const Totem: React.FC = () => {
       return;
     }
     
-    setState(prev => ({ ...prev, cpf }));
+    setState(prev => ({ ...prev, cpf: cpf }));
     checkAppointment(cleanCpf);
   };
 
@@ -130,6 +157,14 @@ const Totem: React.FC = () => {
 
   const renderScreen = () => {
     switch (state.currentScreen) {
+      case 'initial':
+        return (
+          <InitialScreen
+            onServiceSelect={handleServiceSelect}
+            loading={state.loading}
+          />
+        );
+      
       case 'cpf':
         return (
           <CpfScreen
@@ -138,6 +173,7 @@ const Totem: React.FC = () => {
             error={state.error}
             onCpfChange={handleCpfChange}
             onCpfSubmit={handleCpfSubmit}
+            onBack={() => setState(prev => ({ ...prev, currentScreen: 'initial' }))}
           />
         );
       
@@ -148,6 +184,7 @@ const Totem: React.FC = () => {
             loading={state.loading}
             onConfirm={() => generateTicket('confirmation')}
             onAssistance={() => generateTicket('assistance')}
+            serviceType={state.serviceType}
           />
         );
       
@@ -158,15 +195,17 @@ const Totem: React.FC = () => {
             loading={state.loading}
             onAssistance={() => generateTicket('assistance')}
             onRestart={restartProcess}
+            serviceType={state.serviceType}
           />
         );
       
       case 'ticket':
         const ticketInfo: TicketInfo = {
           number: state.ticketNumber!,
-          type: state.hasAppointment ? 'confirmation' : 'assistance',
+          type: state.ticketType || (state.hasAppointment ? 'confirmation' : 'assistance'),
           cpf: state.cpf,
-          timestamp: new Date()
+          timestamp: new Date(),
+          serviceType: state.serviceType || 'assistencial'
         };
         
         return (
@@ -174,6 +213,7 @@ const Totem: React.FC = () => {
             ticketInfo={ticketInfo}
             hasAppointment={state.hasAppointment}
             onRestart={restartProcess}
+            serviceType={state.serviceType}
           />
         );
       
@@ -185,7 +225,7 @@ const Totem: React.FC = () => {
   return (
     <div className="totem-container">
       <div className="totem-header">
-        <h1>Sistema de Atendimento</h1>
+        <h1>Sistema de Atendimento Médico</h1>
         <p>Totem de Autoatendimento</p>
       </div>
       <div className="totem-content">

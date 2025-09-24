@@ -1,12 +1,13 @@
 import React from 'react';
 import '../styles/screens/CpfScreen.css';
 
-interface CpfScreenProps {
+export interface CpfScreenProps {
   cpf: string;
   loading: boolean;
   error: string;
   onCpfChange: (cpf: string) => void;
   onCpfSubmit: (cpf: string) => void;
+  onBack: () => void;
 }
 
 const CpfScreen: React.FC<CpfScreenProps> = ({

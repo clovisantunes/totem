@@ -1,17 +1,12 @@
-export type ScreenType = 
-  | 'cpf' 
-  | 'hasAppointment' 
-  | 'noAppointment' 
-  | 'confirm' 
-  | 'ticket';
-
 export interface TotemState {
-  currentScreen: ScreenType;
+  currentScreen: 'initial' | 'cpf' | 'hasAppointment' | 'noAppointment' | 'ticket';
   cpf: string;
   hasAppointment: boolean;
   ticketNumber: number | null;
   loading: boolean;
   error: string;
+  serviceType?: 'assistencial' | 'trabalho';
+  ticketType?: 'confirmation' | 'assistance'; // Adicione esta linha
 }
 
 export interface TicketInfo {
@@ -19,4 +14,5 @@ export interface TicketInfo {
   type: 'confirmation' | 'assistance';
   cpf: string;
   timestamp: Date;
+  serviceType: 'assistencial' | 'trabalho';
 }

@@ -6,6 +6,7 @@ interface HasAppointmentScreenProps {
   loading: boolean;
   onConfirm: () => void;
   onAssistance: () => void;
+  serviceType?: 'assistencial' | 'trabalho';
 }
 
 const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
