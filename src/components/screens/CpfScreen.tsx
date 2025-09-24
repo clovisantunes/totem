@@ -15,7 +15,8 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
   loading,
   error,
   onCpfChange,
-  onCpfSubmit
+  onCpfSubmit,
+  onBack // ✅ Agora está sendo recebida
 }) => {
   const handleNumberClick = (number: string) => {
     const cleanCpf = cpf.replace(/\D/g, '');
@@ -60,6 +61,11 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
   return (
     <div className="screen cpf-screen">
       <div className="cpf-container">
+        {/* ✅ BOTÃO DE VOLTAR ADICIONADO AQUI */}
+        <button className="back-button" onClick={onBack}>
+          ← Voltar para Seleção
+        </button>
+        
         <div className="cpf-display-area">
           <h2>Digite seu CPF</h2>
           <p>Use o teclado ao lado para digitar seu CPF</p>
@@ -92,22 +98,18 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
         {/* Teclado numérico (30% direita) */}
         <div className="numeric-keyboard">
           <div className="keyboard-grid">
-            {/* Linha 1 */}
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('1')}>1</button>
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('2')}>2</button>
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('3')}>3</button>
             
-            {/* Linha 2 */}
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('4')}>4</button>
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('5')}>5</button>
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('6')}>6</button>
             
-            {/* Linha 3 */}
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('7')}>7</button>
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('8')}>8</button>
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('9')}>9</button>
             
-            {/* Linha 4 */}
             <button type="button" className="keyboard-key" onClick={() => handleNumberClick('0')}>0</button>
             <button type="button" className="keyboard-key delete-key" onClick={handleDelete}>
               ⌫
