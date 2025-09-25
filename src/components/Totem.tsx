@@ -7,6 +7,7 @@ import NoAppointmentScreen from './screens/NoAppointmentScreen';
 import TicketScreen from './screens/TicketScreen';
 import type { TotemState, TicketInfo } from '../types/index';
 import './styles/Totem.css';
+import logo from '../assets/logo.png';
 
 const Totem: React.FC = () => {
   const [state, setState] = useState<TotemState>({
@@ -248,8 +249,8 @@ const Totem: React.FC = () => {
   return (
     <div className="totem-container">
       <div className="totem-header">
+        <img src={logo} alt="Logo da Clínica" className="totem-logo" />
         <h1>Sistema de Atendimento Médico</h1>
-        <p>Totem de Autoatendimento</p>
       </div>
       <div className="totem-content">
         {renderScreen()}
