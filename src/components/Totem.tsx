@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import InitialScreen from './screens/InitialScreen';
+import ConsultaConfirmScreen from './screens/ConsultaConfirmScreen'; // Importe o novo componente
 import CpfScreen from './screens/CpfScreen';
 import HasAppointmentScreen from './screens/HasAppointmentScreen';
 import NoAppointmentScreen from './screens/NoAppointmentScreen';
@@ -104,10 +105,26 @@ const Totem: React.FC = () => {
         setState(prev => ({
           ...prev,
           loading: false,
-          currentScreen: 'cpf'
+          currentScreen: 'consultaConfirm'
         }));
       } else {
         generateTicket('assistance', serviceType);
+      }
+    }, 1000);
+  };
+
+  const handleConsultaConfirm = (temConsulta: boolean) => {
+    setState(prev => ({ ...prev, loading: true }));
+    
+    setTimeout(() => {
+      if (temConsulta) {
+        setState(prev => ({
+          ...prev,
+          loading: false,
+          currentScreen: 'cpf'
+        }));
+      } else {
+        generateTicket('assistance');
       }
     }, 1000);
   };
@@ -161,6 +178,16 @@ const Totem: React.FC = () => {
           />
         );
       
+      case 'consultaConfirm':
+        return (
+          <ConsultaConfirmScreen
+            loading={state.loading}
+            onSim={() => handleConsultaConfirm(true)}
+            onNao={() => handleConsultaConfirm(false)}
+            onBack={() => setState(prev => ({ ...prev, currentScreen: 'initial' }))}
+          />
+        );
+      
       case 'cpf':
         return (
           <CpfScreen
@@ -169,7 +196,7 @@ const Totem: React.FC = () => {
             error={state.error}
             onCpfChange={handleCpfChange}
             onCpfSubmit={handleCpfSubmit}
-            onBack={() => setState(prev => ({ ...prev, currentScreen: 'initial' }))}
+            onBack={() => setState(prev => ({ ...prev, currentScreen: 'consultaConfirm' }))}
           />
         );
       
