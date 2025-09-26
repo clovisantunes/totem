@@ -10,13 +10,15 @@ interface HasAppointmentScreenProps {
 }
 
 interface ConsultaInfo {
- nome: string;
+  nome: string;
   tipo: string;
   medico: string;
   especialidade: string;
   data: string;
   horario: string;
   sala: string;
+  pago: boolean;
+  reconsulta: boolean;
 }
 
 const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
@@ -27,22 +29,48 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
 }) => {
   const consultasPorCPF: Record<string, ConsultaInfo> = {
     '04364979058': {
-      nome: 'Clovis Antunes',
-      tipo: 'Consulta de Retorno',
-      medico: 'Dr. Carlos Silva',
-      especialidade: 'Cardiologia',
+      nome: 'Usuario Teste Pago',
+      tipo: 'Consulta de Rotina',
+      medico: 'Dra. Tais',
+      especialidade: 'Endocrinologia',
       data: '25/01/2024',
       horario: '14:30',
-      sala: 'Sala 205'
+      sala: 'Sala 205',
+      pago: true,
+      reconsulta: false
     },
     '89790014015': {
       nome: 'Dimitrio Martins de Andrade',
-      tipo: 'Consulta Clinica',
-      medico: 'Dra. Gabriel Porto',
+      tipo: 'Consulta Clínica',
+      medico: 'Dr. Gabriel Porto',
       especialidade: 'Clínica Geral',
       data: '25/01/2024',
       horario: '15:45',
-      sala: 'Sala 108'
+      sala: 'Sala 108',
+      pago: true,
+      reconsulta: false
+    },
+    '69163915880': {
+      nome: 'Paciente Reconsulta',
+      tipo: 'Reconsulta',
+      medico: 'Dr. Carlos Silva',
+      especialidade: 'Cardiologia',
+      data: '25/01/2024',
+      horario: '16:30',
+      sala: 'Sala 301',
+      pago: false,
+      reconsulta: true
+    },
+    '70367617331': {
+      nome: 'Paciente Não Pago',
+      tipo: 'Consulta Nova',
+      medico: 'Dra. Ana Oliveira',
+      especialidade: 'Dermatologia',
+      data: '26/01/2024',
+      horario: '09:00',
+      sala: 'Sala 102',
+      pago: false,
+      reconsulta: false
     }
   };
 
@@ -53,8 +81,12 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
     especialidade: 'Especialidade',
     data: 'Data',
     horario: 'Horário',
-    sala: 'Sala'
+    sala: 'Sala',
+    pago: false,
+    reconsulta: false
   };
+
+  const mostrarBotaoConfirmar = consultaInfo.pago || consultaInfo.reconsulta;
 
   return (
     <div className="screen has-appointment-screen">
@@ -64,6 +96,19 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
         <div className="paciente-info">
           <h3>Paciente: {consultaInfo.nome}</h3>
           <p><strong>CPF:</strong> {cpf}</p>
+          <div className="status-consulta">
+            {!consultaInfo.reconsulta && (
+              <span className={`status-badge ${consultaInfo.pago ? 'pago' : 'nao-pago'}`}>
+                {consultaInfo.pago ? '✅ Pago' : '❌ Não pago'}
+              </span>
+            )}
+            
+            {consultaInfo.reconsulta && (
+              <span className="status-badge reconsulta">
+                🔄 Reconsulta
+              </span>
+            )}
+          </div>
         </div>
         
         <div className="consulta-info">
@@ -77,17 +122,28 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
         </div>
       </div>
       
-      <p className="instruction-text">Por favor, confirme sua chegada ou solicite atendimento.</p>
+      <div className="instruction-text">
+        {consultaInfo.reconsulta ? (
+          <p>Consulta de retorno - pode confirmar sua chegada.</p>
+        ) : consultaInfo.pago ? (
+          <p>Deseja confirmar chegada e aguardar atendimento médico?</p>
+        ) : (
+          <p>Consulta não paga - necessário falar com atendente para regularização.</p>
+        )}
+      </div>
       
       <div className="button-group">
-        <button 
-          className="btn btn-success" 
-          onClick={onConfirm}
-          disabled={loading}
-        >
-          {loading ? <span className="loading"></span> : null}
-          {loading ? 'Processando...' : 'Confirmar Chegada'}
-        </button>
+        {mostrarBotaoConfirmar && (
+          <button 
+            className="btn btn-success" 
+            onClick={onConfirm}
+            disabled={loading}
+          >
+            {loading ? <span className="loading"></span> : null}
+            {loading ? 'Processando...' : 'Sim, Confirmar Consulta'}
+          </button>
+        )}
+        
         <button 
           className="btn btn-secondary" 
           onClick={onAssistance}
@@ -96,6 +152,14 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
           {loading ? <span className="loading"></span> : null}
           {loading ? 'Processando...' : 'Falar com Atendente'}
         </button>
+      </div>
+
+      <div className="info-message">
+        {consultaInfo.reconsulta && !consultaInfo.pago && (
+          <p className="info-text">
+            ℹ️ Consulta de retorno - confirmação liberada.
+          </p>
+        )}
       </div>
     </div>
   );

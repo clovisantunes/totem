@@ -56,7 +56,7 @@ const ConsultaConfirmScreen: React.FC<ConsultaConfirmScreenProps> = ({
             ) : (
               <>
                 <span className="btn-icon">❌</span>
-                <span className="btn-text">Não, preciso de atendimento</span>
+                <span className="btn-text">Preciso falar com a Recepção</span>
               </>
             )}
             {loading && 'Processando...'}
@@ -67,7 +67,7 @@ const ConsultaConfirmScreen: React.FC<ConsultaConfirmScreenProps> = ({
           <h4>Como funciona:</h4>
           <ul>
             <li><strong>Sim</strong>: Digite seu CPF para confirmar a consulta</li>
-            <li><strong>Não</strong>: Será direcionado para atendimento geral</li>
+            <li><strong>Não</strong>: Falar com a recepção</li>
             <li>Ambas as opções garantem seu atendimento</li>
           </ul>
         </div>

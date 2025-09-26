@@ -69,7 +69,7 @@ const Totem: React.FC = () => {
     
     setTimeout(() => {
       const cpfLimpo = cpf.replace(/\D/g, '');
-      const hasAppointment = ['04364979058', '89790014015'].includes(cpfLimpo);
+      const hasAppointment = ['04364979058', '89790014015','69163915880', '70367617331'].includes(cpfLimpo);
 
       setState(prev => ({
         ...prev,
@@ -198,6 +198,7 @@ const Totem: React.FC = () => {
             onCpfChange={handleCpfChange}
             onCpfSubmit={handleCpfSubmit}
             onBack={() => setState(prev => ({ ...prev, currentScreen: 'consultaConfirm' }))}
+            onAssistance={() => generateTicket('assistance')}
           />
         );
       

@@ -24,7 +24,7 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
             <ul>
               <li>• Consultas agendadas</li>
               <li>• Exames laboratoriais</li>
-              <li>• Acompanhamento médico</li>
+              <li>• Informações</li>
             </ul>
             <div className="service-action">
               {loading ? (
@@ -44,9 +44,8 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
             <h3>Medicina do Trabalho</h3>
             <p>Atendimento especializado para empresas</p>
             <ul>
-              <li>• Atestados médicos</li>
-              <li>• Exames admissionais</li>
-              <li>• Periódicos e demissionais</li>
+              <li>• Exames admissionais, demissionais, periódicos, troca de função, retorno ao trabalho</li>
+              <li>• Médico do Trabalho</li>
             </ul>
             <div className="service-action">
               {loading ? (

@@ -8,6 +8,7 @@ export interface CpfScreenProps {
   onCpfChange: (cpf: string) => void;
   onCpfSubmit: (cpf: string) => void;
   onBack: () => void;
+  onAssistance: () => void; 
 }
 
 const CpfScreen: React.FC<CpfScreenProps> = ({
@@ -16,7 +17,8 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
   error,
   onCpfChange,
   onCpfSubmit,
-  onBack 
+  onBack,
+  onAssistance 
 }) => {
   const handleNumberClick = (number: string) => {
     const cleanCpf = cpf.replace(/\D/g, '');
@@ -42,6 +44,10 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
     if (cpf.replace(/\D/g, '').length === 11) {
       onCpfSubmit(cpf);
     }
+  };
+
+  const handleNaoSeiCPF = () => {
+    onAssistance();
   };
 
   const formatCPF = (value: string): string => {
@@ -84,12 +90,23 @@ const CpfScreen: React.FC<CpfScreenProps> = ({
 
           {error && <div className="error-message">{error}</div>}
           
+          <div className='no-cpf-message'>
+            <button 
+              className="no-cpf-button"
+              onClick={handleNaoSeiCPF}
+              disabled={loading}
+            >
+              Não sei meu CPF
+            </button>
+          </div>
+          
           <div className="cpf-instructions">
             <p>Instruções:</p>
             <ul>
               <li>Digite apenas os números do CPF</li>
               <li>O formato será aplicado automaticamente</li>
               <li>Clique em ENTER quando terminar</li>
+              <li>Ou clique em "Não sei meu CPF" para atendimento</li>
             </ul>
           </div>
         </div>
