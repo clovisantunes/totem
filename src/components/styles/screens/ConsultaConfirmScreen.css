@@ -151,7 +151,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .confirm-options {
     flex-direction: column;

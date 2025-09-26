@@ -7,13 +7,13 @@
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  overflow: auto; /* Permite scroll se necessário */
+  overflow: auto; 
 }
 
 .initial-container {
   width: 100%;
   max-width: 1200px;
-  padding: 2vh 2vw; /* Usar unidades relativas */
+  padding: 2vh 2vw; 
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
 
 .initial-header h1 {
   color: #2d3748;
-  font-size: clamp(2rem, 4vw, 3rem); /* Tamanho responsivo */
+  font-size: clamp(2rem, 4vw, 3rem); 
   margin-bottom: 1vh;
   font-weight: 600;
   line-height: 1.2;
