@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/screens/HasAppointmentScreen.css';
 
 interface HasAppointmentScreenProps {
@@ -27,9 +27,12 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
   onConfirm,
   onAssistance
 }) => {
+  const [countdown, setCountdown] = useState(5);
+  const [autoRedirect, setAutoRedirect] = useState(false);
+
   const consultasPorCPF: Record<string, ConsultaInfo> = {
     '04364979058': {
-      nome: 'Usuario Teste Pago',
+      nome: ' EX: Usuario Teste Pago',
       tipo: 'Consulta de Rotina',
       medico: 'Dra. Tais',
       especialidade: 'Endocrinologia',
@@ -40,7 +43,7 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
       reconsulta: false
     },
     '89790014015': {
-      nome: 'Dimitrio Martins de Andrade',
+      nome: ' EX: Dimitrio Martins de Andrade',
       tipo: 'Consulta Clínica',
       medico: 'Dr. Gabriel Porto',
       especialidade: 'Clínica Geral',
@@ -51,7 +54,7 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
       reconsulta: false
     },
     '69163915880': {
-      nome: 'Paciente Reconsulta',
+      nome: 'EX: Paciente Reconsulta',
       tipo: 'Reconsulta',
       medico: 'Dr. Carlos Silva',
       especialidade: 'Cardiologia',
@@ -62,7 +65,7 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
       reconsulta: true
     },
     '70367617331': {
-      nome: 'Paciente Não Pago',
+      nome: 'EX: Paciente Não Pago',
       tipo: 'Consulta Nova',
       medico: 'Dra. Ana Oliveira',
       especialidade: 'Dermatologia',
@@ -75,7 +78,7 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
   };
 
   const consultaInfo = consultasPorCPF[cpf.replace(/\D/g, '')] || {
-    nome: 'Paciente',
+    nome: 'EX:Paciente',
     tipo: 'Consulta Médica',
     medico: 'Médico',
     especialidade: 'Especialidade',
@@ -87,6 +90,63 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
   };
 
   const mostrarBotaoConfirmar = consultaInfo.pago || consultaInfo.reconsulta;
+  const consultaNaoPaga = !consultaInfo.pago && !consultaInfo.reconsulta;
+
+  useEffect(() => {
+    if (consultaNaoPaga) {
+      setAutoRedirect(true);
+      
+      const timer = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            onAssistance();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [consultaNaoPaga, onAssistance]);
+
+  if (consultaNaoPaga && autoRedirect) {
+    return (
+      <div className="screen has-appointment-screen">
+        <div className="consulta-nao-paga-container">          
+          <div className="consulta-details">
+            <div className="paciente-info">
+              <h3>Paciente: {consultaInfo.nome}</h3>
+              <p><strong>CPF:</strong> {cpf}</p>
+              <div className="status-consulta">
+              </div>
+            </div>
+            
+            <div className="consulta-info">
+              <h4>Detalhes da Consulta:</h4>
+              <p><strong>Tipo:</strong> {consultaInfo.tipo}</p>
+              <p><strong>Médico:</strong> {consultaInfo.medico}</p>
+              <p><strong>Especialidade:</strong> {consultaInfo.especialidade}</p>
+              <p><strong>Data:</strong> {consultaInfo.data}</p>
+              <p><strong>Horário:</strong> {consultaInfo.horario}</p>
+              <p><strong>Local:</strong> {consultaInfo.sala}</p>
+            </div>
+          </div>
+
+          <div className="countdown-message">
+            <div className="countdown-display">
+              <span className="countdown-number">{countdown}</span>
+              <span className="countdown-text">segundos</span>
+            </div>
+            <p className="info-text">
+              Aguarde, seu ticket será emitido automaticamente.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="screen has-appointment-screen">
@@ -99,7 +159,7 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
           <div className="status-consulta">
             {!consultaInfo.reconsulta && (
               <span className={`status-badge ${consultaInfo.pago ? 'pago' : 'nao-pago'}`}>
-                {consultaInfo.pago ? '✅ Pago' : '❌ Não pago'}
+                {consultaInfo.pago ? '✅ Pré-Pago' : '❌ Não pago'}
               </span>
             )}
             
@@ -124,7 +184,7 @@ const HasAppointmentScreen: React.FC<HasAppointmentScreenProps> = ({
       
       <div className="instruction-text">
         {consultaInfo.reconsulta ? (
-          <p>Consulta de retorno - pode confirmar sua chegada.</p>
+          <p>Deseja confirmar chegada e aguardar atendimento médico</p>
         ) : consultaInfo.pago ? (
           <p>Deseja confirmar chegada e aguardar atendimento médico?</p>
         ) : (

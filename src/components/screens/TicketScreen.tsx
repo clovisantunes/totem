@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { TicketInfo } from '../../types';
 import '../styles/screens/TicketScreen.css';
 
@@ -14,12 +14,21 @@ const TicketScreen: React.FC<TicketScreenProps> = ({
   hasAppointment,
   onRestart
 }) => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onRestart();
-    }, 5000);
+  const [countdown, setCountdown] = useState(5);
 
-    return () => clearTimeout(timer);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          onRestart();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
   }, [onRestart]);
 
   return (
@@ -46,7 +55,10 @@ const TicketScreen: React.FC<TicketScreenProps> = ({
       </div>
       
       <div className="countdown">
-        <p>Voltando para tela inicial em: <span className="countdown-number">5</span> segundos</p>
+        <p>Voltando para tela inicial em: 
+          <span className="countdown-number">{countdown}</span> 
+          segundos
+        </p>
       </div>
     </div>
   );
