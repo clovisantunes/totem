@@ -46,6 +46,8 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
             <ul>
               <li>• Exames admissionais, demissionais, periódicos, troca de função, retorno ao trabalho</li>
               <li>• Médico do Trabalho</li>
+              <li>• Perícia Médica</li>
+              <li>• Junta Médica</li>
             </ul>
             <div className="service-action">
               {loading ? (
