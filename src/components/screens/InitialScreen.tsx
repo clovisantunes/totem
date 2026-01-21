@@ -10,22 +10,16 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
   return (
     <div className="screen initial-screen">
       <div className="initial-container">
-    
-        
         <div className="service-selection">
           <button 
             className="service-card assistencial-card"
             onClick={() => onServiceSelect('assistencial')}
             disabled={loading}
           >
-            <div className="service-icon">🏥</div>
-            <h3>Medicina Assistencial</h3>
-            <p>Consulta médica geral, exames e acompanhamento</p>
             <ul>
-              <li>• Consultas agendadas</li>
-              <li>• Exames laboratoriais</li>
-              <li>• Informações</li>
-            </ul>
+              <li className="initial-li">• Consultas agendadas</li>
+              <li className="initial-li">• Exames laboratoriais</li>
+              <li className="initial-li">• Informações</li>
             <div className="service-action">
               {loading ? (
                 <span className="loading"></span>
@@ -33,6 +27,7 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
                 <span className="action-text">SELECIONAR →</span>
               )}
             </div>
+            </ul>
           </button>
           
           <button 
@@ -40,16 +35,8 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
             onClick={() => onServiceSelect('trabalho')}
             disabled={loading}
           >
-            <div className="service-icon">👷</div>
+            <div className="service-action-medicina">
             <h3>Medicina do Trabalho</h3>
-            <p>Atendimento especializado para empresas</p>
-            <ul>
-              <li>• Exames admissionais, demissionais, periódicos, troca de função, retorno ao trabalho</li>
-              <li>• Médico do Trabalho</li>
-              <li>• Perícia Médica</li>
-              <li>• Junta Médica</li>
-            </ul>
-            <div className="service-action">
               {loading ? (
                 <span className="loading"></span>
               ) : (
