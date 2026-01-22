@@ -17,8 +17,8 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ onServiceSelect, loading 
             disabled={loading}
           >
             <ul>
-              <li className="initial-li">• Consultas agendadas</li>
-              <li className="initial-li">• Exames laboratoriais</li>
+              <li className="initial-li">• Consultas</li>
+              <li className="initial-li">• Exames</li>
               <li className="initial-li">• Informações</li>
             <div className="service-action">
               {loading ? (
