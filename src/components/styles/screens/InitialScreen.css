@@ -54,7 +54,7 @@
 
 .service-card {
   background: #ffffff;
-  border: 3px solid #f1f5f9;
+  border: 4px solid #e2e8f0;
   border-radius: 20px;
   padding: 3vh 2vw;
   cursor: pointer;
@@ -65,29 +65,87 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  animation: pulse-border 3s infinite;
+}
+
+/* Pseudo-elemento para efeito de borda */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 4px solid transparent;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Cores específicas para cada card */
+.assistencial-card {
+  border-color: #10b981;
+  animation: pulse-border 3s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.trabalho-card {
+  border-color: #0d9488;
+  animation: pulse-border 3s infinite 1.5s;
+  animation-timing-function: ease-in-out;
 }
 
 .service-card:hover:not(:disabled) {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
-  border-color: #0d9488;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-width: 4px;
+}
+
+/* Efeito de brilho na borda ao passar o mouse */
+.service-card:hover::before {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 
+    0 0 15px rgba(16, 185, 129, 0.2),
+    inset 0 0 15px rgba(16, 185, 129, 0.1);
 }
 
 .service-card:disabled {
   cursor: not-allowed;
   opacity: 0.7;
   background: #f8fafc;
+  animation: none;
 }
 
 .assistencial-card:hover:not(:disabled) {
   border-color: #059669;
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(5, 150, 105, 0.15);
 }
 
 .trabalho-card:hover:not(:disabled) {
-  border-color: #059669; /* Alterado para a mesma cor do primeiro */
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); /* Mesmo gradiente */
+  border-color: #0f766e;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(13, 148, 136, 0.15);
+}
+
+/* Estado focado para acessibilidade */
+.service-card:focus {
+  outline: none;
+}
+
+.service-card:focus::before {
+  border-color: #3b82f6;
+  box-shadow: 
+    0 0 0 3px rgba(59, 130, 246, 0.5),
+    0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 .service-card h3 {
@@ -133,13 +191,15 @@
   padding-top: 4vh;
   width: 100%;
 }
-.service-action-medicina{
-    display: flex;
+
+.service-action-medicina {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
+
 .action-text {
   color: #0d9488;
   font-weight: 600;
@@ -190,6 +250,35 @@
   }
 }
 
+@keyframes pulse-border {
+  0% {
+    border-color: #e2e8f0;
+  }
+  50% {
+    border-color: #cbd5e1;
+  }
+  100% {
+    border-color: #e2e8f0;
+  }
+}
+
+/* Para dispositivos touch (totem) */
+@media (hover: none) and (pointer: coarse) {
+  .service-card {
+    border-width: 5px;
+  }
+  
+  .service-card:active:not(:disabled) {
+    transform: translateY(-4px);
+    border-color: #059669;
+    background: #f0fdf4;
+  }
+  
+  .service-card:not(:disabled) {
+    animation: none;
+  }
+}
+
 @media (max-width: 1024px) {
   .service-selection {
     gap: 2vw;
@@ -217,6 +306,11 @@
     max-height: none;
     height: auto;
     padding: 3vh 4vw;
+    border-width: 3px;
+  }
+  
+  .service-card::before {
+    border-width: 3px;
   }
   
   .initial-header {
@@ -243,6 +337,11 @@
   
   .service-card {
     padding: 2.5vh 5vw;
+    border-width: 2px;
+  }
+  
+  .service-card::before {
+    border-width: 2px;
   }
   
   .service-card ul {
@@ -259,6 +358,10 @@
   
   .service-card li {
     font-size: 28px;
+  }
+  
+  .service-card:not(:disabled) {
+    animation: none;
   }
 }
 
