@@ -3,7 +3,7 @@
 }
 
 .has-appointment-screen p {
-  color: #555;
+  color: #475569;
   font-size: 18px;
   line-height: 1.5;
   max-width: 500px;
@@ -29,39 +29,45 @@
 }
 
 .btn-primary {
-  background-color: #2a5298;
+  background-color: #0d9488;
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #1e3c72;
+  background-color: #0f766e;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary {
-  background-color: #f0f2f5;
-  color: #333;
+  background-color: #f8fafc;
+  color: #334155;
+  border: 2px solid #f1f5f9;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background-color: #e0e5eb;
+  background-color: #f1f5f9;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .btn-success {
-  background-color: #28a745;
+  background-color: #059669;
   color: white;
 }
 
 .btn-success:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #047857;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(5, 150, 105, 0.1);
 }
 
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none !important;
+  background-color: #f1f5f9;
+  color: #94a3b8;
 }
 
 @media (max-width: 600px) {
@@ -75,52 +81,57 @@
     max-width: 300px;
   }
 }
+
 .has-appointment-screen {
   gap: 20px;
 }
 
 .has-appointment-screen p {
-  color: #555;
+  color: #475569;
   font-size: 18px;
   line-height: 1.5;
   max-width: 500px;
 }
 
 .consulta-details {
-  background-color: #f8f9fa;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
+  background-color: #f8fafc;
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
   padding: 20px;
   margin: 15px 0;
   max-width: 500px;
   width: 100%;
   text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .paciente-info {
   margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .paciente-info h3 {
-  color: #2a5298;
+  color: #0f172a;
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .consulta-info h4 {
-  color: #2a5298;
+  color: #0f172a;
   margin-bottom: 15px;
+  font-size: 18px;
 }
 
 .consulta-info p {
   margin-bottom: 8px;
   font-size: 16px;
+  color: #334155;
 }
 
 .instruction-text {
   font-weight: 600;
-  color: #2a5298 !important;
+  color: #0d9488 !important;
   margin-top: 10px !important;
 }
 
@@ -144,46 +155,52 @@
 }
 
 .btn-primary {
-  background-color: #2a5298;
+  background-color: #0d9488;
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #1e3c72;
+  background-color: #0f766e;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 148, 136, 0.2);
 }
 
 .btn-secondary {
-  background-color: #f0f2f5;
-  color: #333;
+  background-color: #f8fafc;
+  color: #334155;
+  border: 2px solid #f1f5f9;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background-color: #e0e5eb;
+  background-color: #f1f5f9;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .btn-success {
-  background-color: #28a745;
+  background-color: #059669;
   color: white;
 }
 
 .btn-success:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #047857;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(5, 150, 105, 0.1);
 }
 
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none !important;
+  background-color: #f1f5f9;
+  color: #94a3b8;
 }
 
 .loading {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(255,255,255,.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   border-top-color: #fff;
   animation: spin 1s ease-in-out infinite;
@@ -210,7 +227,6 @@
   }
 }
 
-
 .consulta-nao-paga-container {
   text-align: center;
   padding: 20px;
@@ -219,14 +235,16 @@
 .warning-icon {
   font-size: 36px;
   margin-bottom: 20px;
+  color: #f59e0b;
 }
 
 .countdown-message {
   margin-top: 15px;
   padding: 20px;
-  background: #fff3cd;
+  background: #fef3c7;
   border-radius: 10px;
-  border: 2px solid #ffc107;
+  border: 2px solid #f59e0b;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.1);
 }
 
 .countdown-display {
@@ -246,7 +264,7 @@
 
 .countdown-text {
   font-size: 16px;
-  color: #856404;
+  color: #92400e;
   font-weight: 600;
 }
 
@@ -257,14 +275,14 @@
 }
 
 .warning-text {
-  color: #856404;
+  color: #92400e;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
 .info-text {
-  color: #0c5460;
+  color: #075985;
   font-size: 14px;
   margin-top: 10px;
 }

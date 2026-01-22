@@ -3,7 +3,7 @@
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   display: flex;
   flex-direction: column;
   font-family: 'Arial', sans-serif;
@@ -14,8 +14,8 @@
   background: #ffffff;
   padding: 10px;
   text-align: center;
-  color: #2d3748;
-  border-bottom: 3px solid #25d366; 
+  color: #0f172a;
+  border-bottom: 3px solid #0d9488;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,14 +23,14 @@
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  color: #25d366; 
+  color: #0d9488;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .totem-header p {
   margin: 10px 0 0 0;
   font-size: 18px;
-  color: #4a5568; 
+  color: #334155;
   font-weight: 400;
 }
 
@@ -43,5 +43,5 @@
   margin: 0;
   overflow: hidden;
   min-height: 0;
-  background: #f7fafc;
+  background: #f8fafc;
 }

@@ -31,7 +31,7 @@
 }
 
 .initial-header h1 {
-  color: #2d3748;
+  color: #0f172a;
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 1vh;
   font-weight: 600;
@@ -39,7 +39,7 @@
 }
 
 .initial-header p {
-  color: #718096;
+  color: #475569;
   font-size: clamp(1rem, 2vw, 1.25rem);
   line-height: 1.4;
 }
@@ -54,7 +54,7 @@
 
 .service-card {
   background: #ffffff;
-  border: 3px solid #e2e8f0;
+  border: 3px solid #f1f5f9;
   border-radius: 20px;
   padding: 3vh 2vw;
   cursor: pointer;
@@ -65,29 +65,33 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .service-card:hover:not(:disabled) {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-color: #25d366;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  border-color: #0d9488;
 }
 
 .service-card:disabled {
   cursor: not-allowed;
   opacity: 0.7;
+  background: #f8fafc;
 }
 
 .assistencial-card:hover:not(:disabled) {
-  border-color: #25d366;
+  border-color: #059669;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
 }
 
 .trabalho-card:hover:not(:disabled) {
-  border-color: #3182ce;
+  border-color: #059669; /* Alterado para a mesma cor do primeiro */
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); /* Mesmo gradiente */
 }
 
 .service-card h3 {
-  color: #4a5568;
+  color: #334155;
   font-size: 36px;
   margin-bottom: 4vh;
   font-weight: 600;
@@ -98,7 +102,7 @@
 }
 
 .service-card p {
-  color: #718096;
+  color: #475569;
   font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   margin-bottom: 2vh;
   line-height: 1.4;
@@ -112,7 +116,7 @@
 }
 
 .service-card li {
-  color: #4a5568;
+  color: #334155;
   font-size: 36px;
   margin: 0.5vh 0;
   list-style: none;
@@ -137,7 +141,7 @@
   height: 100%;
 }
 .action-text {
-  color: #25d366;
+  color: #0d9488;
   font-weight: 600;
   font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   transition: all 0.3s ease;
@@ -145,19 +149,21 @@
 
 .service-card:hover .action-text {
   transform: translateX(5px);
+  color: #0f766e;
 }
 
 .initial-instructions {
-  background: #f7fafc;
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdfa 100%);
   padding: 2vh 2vw;
   border-radius: 12px;
-  border-left: 4px solid #25d366;
+  border-left: 4px solid #059669;
   max-width: 800px;
   margin: 0 auto;
+  box-shadow: 0 8px 16px -4px rgba(5, 150, 105, 0.05);
 }
 
 .initial-instructions p {
-  color: #4a5568;
+  color: #334155;
   margin: 0.5vh 0;
   font-size: clamp(0.8rem, 1.6vw, 1rem);
   line-height: 1.4;
@@ -165,14 +171,14 @@
 }
 
 .initial-instructions strong {
-  color: #2d3748;
+  color: #0f172a;
 }
 
 .loading {
   display: inline-block;
   width: 24px;
   height: 24px;
-  border: 3px solid #25d366;
+  border: 3px solid #059669;
   border-radius: 50%;
   border-top-color: transparent;
   animation: spin 1s ease-in-out infinite;

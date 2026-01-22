@@ -6,7 +6,7 @@
   display: flex;
   background: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   position: relative; 
 }
@@ -23,45 +23,49 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  background: #f7fafc;
-  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  border: 2px solid #f1f5f9;
   border-radius: 8px;
   padding: 10px 15px;
-  color: #4a5568;
+  color: #475569;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
 }
-.no-cpf-message{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    button{
-        width: 30%;
-        height: 3em;
-        background: #25d366;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: 600;
-        color: white;
-        transition: all 1s ease;
-    }
-    button:hover{
-     background: #22c55e;
-     transform: translateY(-2px);
-     box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
-  }
-  }
-.back-button:hover {
-  background: #25d366;
+
+.no-cpf-message {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-cpf-message button {
+  width: 30%;
+  height: 3em;
+  background: #0d9488;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
   color: white;
-  border-color: #25d366;
+  border: none;
+}
+
+.no-cpf-message button:hover {
+  background: #0f766e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(13, 148, 136, 0.4);
+}
+
+.back-button:hover {
+  background: #0d9488;
+  color: white;
+  border-color: #0d9488;
   transform: translateX(-3px);
 }
 
@@ -77,14 +81,14 @@
 }
 
 .cpf-display-area h2 {
-  color: #2d3748;
+  color: #0f172a;
   font-size: 36px;
   margin-bottom: 15px;
   font-weight: 600;
 }
 
 .cpf-display-area p {
-  color: #718096;
+  color: #475569;
   font-size: 18px;
   line-height: 1.5;
 }
@@ -101,10 +105,10 @@
   height: 80px;
   font-size: 2.5em;
   text-align: center;
-  border: 3px solid #25d366;
+  border: 3px solid #0d9488;
   border-radius: 15px;
-  background: #f7fafc;
-  color: #2d3748;
+  background: #f8fafc;
+  color: #0f172a;
   margin: 0 auto;
   display: block;
   pointer-events: none;
@@ -114,21 +118,22 @@
 .cpf-length {
   margin-top: 15px;
   font-size: 1.2em;
-  color: #718096;
+  color: #475569;
   font-weight: 500;
 }
 
 .cpf-instructions {
   margin-top: 30px;
   padding: 25px;
-  background: #f7fafc;
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdfa 100%);
   border-radius: 12px;
-  border-left: 4px solid #25d366;
+  border-left: 4px solid #059669;
   flex-shrink: 0;
+  box-shadow: 0 8px 16px -4px rgba(5, 150, 105, 0.05);
 }
 
 .cpf-instructions p {
-  color: #2d3748;
+  color: #0f172a;
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 16px;
@@ -142,7 +147,7 @@
 
 .cpf-instructions li {
   margin: 8px 0;
-  color: #4a5568;
+  color: #334155;
   font-size: 16px;
   line-height: 1.4;
 }
@@ -150,13 +155,13 @@
 .numeric-keyboard {
   width: 30%;
   height: 100%;
-  background: #f7fafc;
+  background: #f8fafc;
   padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  border-left: 2px solid #e2e8f0;
+  border-left: 2px solid #f1f5f9;
 }
 
 .keyboard-grid {
@@ -174,22 +179,22 @@
   border: none;
   border-radius: 12px;
   background: #ffffff;
-  color: #2d3748;
+  color: #0f172a;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  border: 2px solid #f1f5f9;
 }
 
 .keyboard-key:hover {
-  background: #25d366;
+  background: #0d9488;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
-  border-color: #25d366;
+  box-shadow: 0 6px 12px rgba(13, 148, 136, 0.3);
+  border-color: #0d9488;
 }
 
 .keyboard-key:active {
@@ -197,24 +202,24 @@
 }
 
 .delete-key {
-  background: #fed7d7;
-  color: #c53030;
-  border-color: #fed7d7;
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fee2e2;
 }
 
 .delete-key:hover {
-  background: #feb2b2;
+  background: #fecaca;
   color: #ffffff;
 }
 
 .clear-key {
-  background: #feebc8;
-  color: #d69e2e;
-  border-color: #feebc8;
+  background: #fef3c7;
+  color: #d97706;
+  border-color: #fef3c7;
 }
 
 .clear-key:hover {
-  background: #fbd38d;
+  background: #fde68a;
   color: #ffffff;
 }
 
@@ -225,24 +230,24 @@
   font-weight: bold;
   border: none;
   border-radius: 12px;
-  background: #25d366;
+  background: #0d9488;
   color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
   flex-shrink: 0;
-  box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 6px rgba(13, 148, 136, 0.3);
 }
 
 .enter-key:hover:not(:disabled) {
-  background: #22c55e;
+  background: #0f766e;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 6px 12px rgba(13, 148, 136, 0.4);
 }
 
 .enter-key:disabled {
   background: #cbd5e0;
-  color: #a0aec0;
+  color: #94a3b8;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -253,13 +258,13 @@
 }
 
 .error-message {
-  background: #fed7d7;
-  color: #c53030;
+  background: #fee2e2;
+  color: #dc2626;
   padding: 15px;
   border-radius: 8px;
   margin: 20px 0;
   text-align: center;
-  border: 1px solid #feb2b2;
+  border: 1px solid #fecaca;
   flex-shrink: 0;
   font-weight: 500;
 }
@@ -295,7 +300,7 @@
     height: 55%;
     padding: 20px;
     border-left: none;
-    border-top: 2px solid #e2e8f0;
+    border-top: 2px solid #f1f5f9;
   }
   
   .back-button {
